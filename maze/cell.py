@@ -2,7 +2,7 @@ from gui.point import Point
 from gui.line import Line
 
 class Cell:
-    def __init__(self, win, top_left, bottom_right, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
+    def __init__(self, top_left, bottom_right, win=None, left_wall=True, right_wall=True, top_wall=True, bottom_wall=True):
         self.__win = win
         self.left_wall = left_wall
         self.right_wall = right_wall
@@ -15,14 +15,24 @@ class Cell:
         self.center = Point((top_left.x + bottom_right.x) / 2, (top_left.y + bottom_right.y) / 2)
     
     def draw(self):
+        if self.__win is None:
+            return
         if self.left_wall:
             self.__win.draw_line(Line(self.__top_left, self.__bottom_left), "black")
+        else:
+            self.__win.draw_line(Line(self.__top_left, self.__bottom_left), "white")
         if self.right_wall:
             self.__win.draw_line(Line(self.__top_right, self.__bottom_right), "black")
+        else:
+            self.__win.draw_line(Line(self.__top_right, self.__bottom_right), "white")
         if self.top_wall:
             self.__win.draw_line(Line(self.__top_left, self.__top_right), "black")
+        else:
+            self.__win.draw_line(Line(self.__top_left, self.__top_right), "white")
         if self.bottom_wall:
             self.__win.draw_line(Line(self.__bottom_left, self.__bottom_right), "black")
+        else:
+            self.__win.draw_line(Line(self.__bottom_left, self.__bottom_right), "white")
     
     def draw_move(self, to_cell, undo=False):
         line_color = "red"
