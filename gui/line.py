@@ -1,5 +1,3 @@
-from tkinter import Canvas
-
 class Line:
     def __init__(self, point_1, point_2):
         self.point_1 = point_1
