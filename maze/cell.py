@@ -13,6 +13,7 @@ class Cell:
         self.__top_right = Point(bottom_right.x, top_left.y)
         self.__bottom_left = Point(top_left.x, bottom_right.y)
         self.center = Point((top_left.x + bottom_right.x) / 2, (top_left.y + bottom_right.y) / 2)
+        self.visited = False
     
     def draw(self):
         if self.__win is None:

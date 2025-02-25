@@ -6,8 +6,9 @@ from maze.maze import Maze
 
 def main():
     
-    win = Window(800, 600)
-    maze = Maze(Point(10, 10), 7, 5, 100, 100, win)    
+    win = Window(1000, 1000)
+    maze = Maze(Point(10, 10), 9, 9, 100, 100, win)    
+    maze.solve()
     win.wait_for_close()
 
 main()
